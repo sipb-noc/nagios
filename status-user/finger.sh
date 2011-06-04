@@ -5,7 +5,7 @@ ulimit -v 102400
 export LINES=1000
 export COLUMNS=80
 docnagios() {
-	echo q | env TERM=ansi /usr/local/nagios/bin/cnagios -b "$@" | sed 's/\[B/\n/g; s//\n/g' | perl -pe '
+	echo q | env TERM=ansi /usr/local/bin/cnagios -b "$@" | sed 's/\[B/\n/g; s//\n/g' | perl -pe '
 s/^.*(?=sipb-nagios)//; # remove garbage at beginning
 s/(.)\\[(\d+)b/$1x($2+1)/ge; # (\d+)b means repeat previous character n times
 s/\\[(\d+)d//g; # absolute go to line; ignored
