@@ -15,7 +15,7 @@ s/\\[(\d+)d//g; # absolute go to line; ignored
 }
 
 gethostgroups() {
-    cat /etc/nagios3/*.cfg | perl -ne 'print if ( /^(\s*)define hostgroup [\{[]/ ... /[\}\]]/ )' | perl -ne 'm|hostgroup_name\s+(\S+)| and $name = $1; m|members\s+(.+)\s*$| and $members = $1; m|\}| and print "$name\t$members\n"'
+    cat /var/cache/nagios3/objects.cache | perl -ne 'print if ( /^(\s*)define hostgroup [\{[]/ ... /[\}\]]/ )' | perl -ne 'm|hostgroup_name\s+(\S+)| and $name = $1; m|members\s+(.+)\s*$| and $members = $1; m|\}| and print "$name\t$members\n"'
 }
 
 gethgmembers() {
