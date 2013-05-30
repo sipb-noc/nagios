@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This depends on cnagios, which is available from
+# ftp://noc.hep.wisc.edu/pub/src/cnagios/
+
 ulimit -v 102400
 
 export LINES=1000
