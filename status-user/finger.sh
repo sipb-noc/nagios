@@ -26,7 +26,7 @@ gethgmembers() {
 }
 
 read line
-line=${line%[:blank:]}
+line=${line%[[:blank:]]}
 line=${line%}
 
 cols=${line##*-}
