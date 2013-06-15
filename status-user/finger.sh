@@ -25,8 +25,10 @@ gethgmembers() {
     gethostgroups | grep "^$1	" | cut -f 2 -d "	" | sed 's/,/\n/g' | sort -u | perl -pe 's/\n/|/g' | sed 's/|$//'
 }
 
+shopt -s extglob
+
 read line
-line=${line%[[:blank:]]}
+line=${line%%*([[:blank:]])}
 line=${line%}
 
 cols=${line##*-}
