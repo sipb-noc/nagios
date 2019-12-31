@@ -1,88 +1,147 @@
-/* exfoliation: a nagios makeover                                          */
-/* Copyright 2010 Matthew Wall, all rights reserved                        */
-/*                                                                         */
-/* Permission to use, copy, modify, and distribute this software for any   */
-/* purpose with or without fee is hereby granted, provided that the above  */
-/* copyright notice and this permission notice appear in all copies.       */
 
-.status { }
+.status { font-family: arial,serif; font-size: 8pt; background-color: #fff; color: #000; }
 
-.itemTotalsTitle { font-size: 8pt; font-style: italic; clear:both;}
+a { color: #000;  text-decoration: none; }
+a:hover { color: #6e7475; }
+th { text-align: left; font-size: 8pt; padding: 0 5px; border: 0; }
+td { font-size: 8pt; border: 0; }
 
-table.status { font-size: 9pt; padding: 0 0 10 0; }
-th.status    { font-size: 9pt; text-align: left; padding: 0 3px 0 3px; border-bottom: 1px solid #777777; color: #333333; }
-div.status   { font-size: 10pt; text-align: center; }
-.statusOdd   { font-size: 8pt; background-color: #e7e7e7; line-height: 150%; padding: 0 4 0 4; }
-.statusEven  { font-size: 8pt; background-color: #f4f2f2; line-height: 150%; padding: 0 4 0 4; }
+.warningMessage { text-align: center; color: #ff3300; font-weight: bold; font-size: 10pt; }
+.infoMessage { text-align: center; color: #ff3300; font-weight: bold; }
 
-.statusPENDING  { font-size: 8pt; background-color: #acacac; border: 1px solid #777777; padding: 0 5 0 5; }
-.statusOK       { font-size: 8pt; background-color: #88d066; border: 1px solid #777777; padding: 0 5 0 5; }
-.statusRECOVERY { font-size: 8pt; background-color: #88d066; border: 1px solid #777777; padding: 0 5 0 5; }
-.statusUNKNOWN  { font-size: 8pt; background-color: #ffbb55; border: 1px solid #777777; padding: 0 5 0 5; }
-.statusWARNING  { font-size: 8pt; background-color: #ffff00; border: 1px solid #777777; padding: 0 5 0 5; }
-.statusCRITICAL { font-size: 8pt; background-color: #f88888; border: 1px solid #777777; padding: 0 5 0 5; }
+.infoBox { color: #000; padding: 2px; border: 0; }
+.infoBoxTitle { font-size: 10pt; font-weight: bold; color: #000; }
+.infoBoxBadProcStatus { color: #ff3300; }
+a.homepageURL:Hover { color: #ff3300; }
 
-.statusHOSTPENDING          { font-size: 8pt; background-color: #acacac; line-height: 150%; padding: 0 4 0 4; }
-.statusHOSTUP               { font-size: 8pt; background-color: #cce8cc; line-height: 150%; padding: 0 4 0 4; }
-.statusHOSTDOWN             { font-size: 8pt; background-color: #ffdddd; line-height: 150%; padding: 0 4 0 4; }
-.statusHOSTDOWNACK          { font-size: 8pt; background-color: #ffdddd; line-height: 150%; padding: 0 4 0 4; }
-.statusHOSTDOWNSCHED        { font-size: 8pt; background-color: #ffdddd; line-height: 150%; padding: 0 4 0 4; }
-.statusHOSTUNREACHABLE      { font-size: 8pt; background-color: #ffddaa; line-height: 150%; padding: 0 4 0 4; }
-.statusHOSTUNREACHABLEACK   { font-size: 8pt; background-color: #ffddaa; line-height: 150%; padding: 0 4 0 4; }
-.statusHOSTUNREACHABLESCHED { font-size: 8pt; background-color: #ffddaa; line-height: 150%; padding: 0 4 0 4; }
+.statusTitle { text-align: center; font-weight: bold; font-size: 10pt; vertical-align: middle;}
 
-.statusBGUNKNOWN          { font-size: 8pt; background-color: #ffddaa; }
-.statusBGUNKNOWNACK       { font-size: 8pt; background-color: #ffddaa; }
-.statusBGUNKNOWNSCHED     { font-size: 8pt; background-color: #ffddaa; }
-.statusBGWARNING          { font-size: 8pt; background-color: #feffc1; }
-.statusBGWARNINGACK       { font-size: 8pt; background-color: #feffc1; }
-.statusBGWARNINGSCHED     { font-size: 8pt; background-color: #feffc1; }
-.statusBGCRITICAL         { font-size: 8pt; background-color: #ffdddd; }
-.statusBGCRITICALACK      { font-size: 8pt; background-color: #ffdddd; }
-.statusBGCRITICALSCHED    { font-size: 8pt; background-color: #ffdddd; }
-.statusBGDOWN             { font-size: 8pt; background-color: #ffdddd; }
-.statusBGDOWNACK          { font-size: 8pt; background-color: #ffdddd; }
-.statusBGDOWNSCHED        { font-size: 8pt; background-color: #ffdddd; }
-.statusBGUNREACHABLE      { font-size: 8pt; background-color: #ffddaa; }
-.statusBGUNREACHABLEACK   { font-size: 8pt; background-color: #ffddaa; }
-.statusBGUNREACHABLESCHED { font-size: 8pt; background-color: #ffddaa; }
+table.status { background-color: #fff; padding: 2px; border: 0; }
+th.status { font-size: 10pt; background-color: #707677; color: #fff; border: 0; }
+div.status { font-size: 10pt; text-align: center; }
+.statusOdd { background-color: #cfcfcf; }
+.statusEven { background-color: #e7e7e7; }
 
-div.serviceTotals      { font-size: 10pt; text-align: center; font-weight: bold; }
-table.serviceTotals    { font-size: 10pt; font-weight: bold; }
-th.serviceTotals,a.serviceTotals { font-size: 8pt; }
-td.serviceTotals       { font-size: 8pt; text-align: center; background-color: #e0e0e0; border: 1px solid #777777; padding: 2 4 2 4; }
-.serviceTotalsOK       { font-size: 8pt; text-align: center; background-color: #88d066; border: 1px solid #777777; padding: 2 4 2 4; }
-.serviceTotalsWARNING  { font-size: 8pt; text-align: center; background-color: #ffff00; border: 1px solid #777777; padding: 2 4 2 4; }
-.serviceTotalsUNKNOWN  { font-size: 8pt; text-align: center; background-color: #ffbb55; border: 1px solid #777777; padding: 2 4 2 4; }
-.serviceTotalsCRITICAL { font-size: 8pt; text-align: center; background-color: #f88888; border: 1px solid #777777; padding: 2 4 2 4; }
-.serviceTotalsPENDING  { font-size: 8pt; text-align: center; background-color: #acacac; border: 1px solid #777777; padding: 2 4 2 4; }
-.serviceTotalsPROBLEMS { font-size: 8pt; text-align: center; background-color: #aaccff; border: 1px solid #777777; padding: 2 4 2 4; }
+.statusPENDING { text-align: center; background-color: #acacac; color: #fff; }
+.statusDOWNTIME { text-align: center; background-color: #acacac; color: #fff; }
+.statusOK { text-align: center;  background-color: #00CC33; color: #fff; }
+.statusRECOVERY { text-align: center; background-color: #00CC33; color: #fff; }
+.statusUNKNOWN { text-align: center; background-color: #E066FF; color: #fff; }
+.statusWARNING { text-align: center; background-color: #ffa500; color: #fff; }
+.statusCRITICAL { text-align: center; background-color: #ff3300; color: #fff; }
+.statusPENDING a, .statusDOWNTIME a, .statusOK a, .statusRECOVERY a, .statusUNKNOWN a, .statusWARNING a, .statusCRITICAL a { color: #000; }
+.statusPENDING a:hover, .statusDOWNTIME a:hover, .statusOK a:hover, .statusRECOVERY a:hover, .statusUNKNOWN a:hover, .statusWARNING a:hover, .statusCRITICAL a:hover { color: #fff; }
 
-div.hostTotals         { font-size: 10pt; text-align: center; font-weight: bold; }
-table.hostTotals       { font-size: 10pt; font-weight: bold; }
-th.hostTotals,a.hostTotals { font-size: 8pt; }
-td.hostTotals          { font-size: 8pt; text-align: center; background-color: #e0e0e0; border: 1px solid #777777; padding: 2 4 2 4; }
-.hostTotalsUP          { font-size: 8pt; text-align: center; background-color: #88d066; border: 1px solid #777777; padding: 2 4 2 4; }
-.hostTotalsDOWN        { font-size: 8pt; text-align: center; background-color: #f88888; border: 1px solid #777777; padding: 2 4 2 4; }
-.hostTotalsUNREACHABLE { font-size: 8pt; text-align: center; background-color: #ffbb55; border: 1px solid #777777; padding: 2 4 2 4; }
-.hostTotalsPENDING     { font-size: 8pt; text-align: center; background-color: #acacac; border: 1px solid #777777; padding: 2 4 2 4; }
-.hostTotalsPROBLEMS    { font-size: 8pt; text-align: center; background-color: #aaccff; border: 1px solid #777777; padding: 2 4 2 4; }
+.statusHOSTPENDING { text-align: center; background-color: #acacac; color: #fff; }
+.statusHOSTDOWNTIME { text-align: center; background-color: #acacac; color: #fff; }
+.statusHOSTUP { text-align: center; background-color: #00cc33; color: #fff; }
+.statusHOSTDOWN { text-align: center; background-color: #ff3300; color: #fff; }
+.statusHOSTDOWNACK { text-align: center; background-color: #ff3300; color: #fff; }
+.statusHOSTDOWNSCHED { text-align: center; background-color: #ff3300; color: #fff; }
+.statusHOSTUNREACHABLE { text-align: center; background-color: #E066FF; color: #fff; }
+.statusHOSTUNREACHABLEACK { text-align: center; background-color: #E066FF; color: #fff; }
+.statusHOSTUNREACHABLESCHED { text-align: center; background-color: #E066FF; color: #fff; }
+.statusHOSTPENDING a, .statusHOSTDOWNTIME a, .statusHOSTUP a, .statusHOSTDOWN a, .statusHOSTDOWNACK a, .statusHOSTDOWNSCHED a, .statusHOSTUNREACHABLE a, .statusHOSTUNREACHABLEACK a, .statusHOSTUNREACHABLESCHED a { color: #000; }
+.statusHOSTPENDING a:hover, .statusHOSTDOWNTIME a:hover, .statusHOSTUP a:hover, .statusHOSTDOWN a:hover, .statusHOSTDOWNACK a:hover, .statusHOSTDOWNSCHED a:hover, .statusHOSTUNREACHABLE a:hover, .statusHOSTUNREACHABLEACK a:hover, .statusHOSTUNREACHABLESCHED a:hover { color: #fff; }
 
-.miniStatusPENDING     { font-size: 8pt; text-align: center; background-color: #acacac; border: 1px solid #777777; padding: 0 5 0 5; }
-.miniStatusOK          { font-size: 8pt; text-align: center; background-color: #88d066; border: 1px solid #777777; padding: 0 5 0 5; }
-.miniStatusUNKNOWN     { font-size: 8pt; text-align: center; background-color: #ffbb55; border: 1px solid #777777; padding: 0 5 0 5; }
-.miniStatusWARNING     { font-size: 8pt; text-align: center; background-color: #ffff00; border: 1px solid #777777; padding: 0 5 0 5; }
-.miniStatusCRITICAL    { font-size: 8pt; text-align: center; background-color: #f88888; border: 1px solid #777777; padding: 0 5 0 5; }
+.statusBGUNKNOWN { background-color: #EEAEEE; }
+.statusBGUNKNOWNACK { background-color: #EEAEEE; }
+.statusBGUNKNOWNSCHED { background-color: #EEAEEE; }
+.statusBGWARNING { background-color: #ffda9f; }
+.statusBGWARNINGACK { background-color: #ffda9f; }
+.statusBGWARNINGSCHED { background-color: #ffda9f; }
+.statusBGCRITICAL { background-color: #ffd4c9; }
+.statusBGCRITICALACK { background-color: #ffd4c9; }
+.statusBGCRITICALSCHED { background-color: #ffd4c9; }
+.statusBGDOWN { background-color: #ffd4c9; }
+.statusBGDOWNACK { background-color: #ffd4c9; }
+.statusBGDOWNSCHED { background-color: #ffd4c9; }
+.statusBGUNREACHABLE { background-color: #EEAEEE; }
+.statusBGUNREACHABLEACK { background-color: #EEAEEE; }
+.statusBGUNREACHABLESCHED { background-color: #EEAEEE; }
 
-.miniStatusUP          { font-size: 8pt; text-align: center; background-color: #88d066; border: 1px solid #777777; padding: 0 5 0 5; }
-.miniStatusDOWN        { font-size: 8pt; text-align: center; background-color: #f88888; border: 1px solid #777777; padding: 0 5 0 5; }
-.miniStatusUNREACHABLE { font-size: 8pt; text-align: center; background-color: #ffbb55; border: 1px solid #777777; padding: 0 5 0 5; }
+div.serviceTotals { text-align: center; font-weight: bold; font-size: 10pt; }
+table.serviceTotals { font-size: 10pt; background-color: #fff; padding: 2px; border: 0; }
+th.serviceTotals,A.serviceTotals { text-align: center; font-size: 10pt; background-color: #707677; color: #fff; border: 0; }
+td.serviceTotals { text-align: center; background-color: #e9e9e9; }
+a.serviceTotals:hover { color: #000; }
 
-/* page number styles, added 2/01/2012 -MG */
-#top_page_numbers { float:right;} 
-#result_limit { display:inline;} 
-.pagenumber { display: block; float:left; border: 1px solid #AAAAAA; padding: 0 2px 0 2px; margin: 1px;text-align:center; height:15px; }
-a.pagenumber:hover { background-color: #EFEFEF;text-decoration:none;}
-.current_page { color: #AAA; }
-#inner_numbers { clear:right;} 
-#pagelimit,#bottom_page_numbers { font-size:8pt;}
+.serviceTotalsOK { text-align: center; background-color: #00CC33; color: #fff; border: 0 }
+.serviceTotalsBGOK { border: 1px #00CC33 solid; }
+.serviceTotalsWARNING { text-align: center; background-color: #ffa500; color: #fff; border: 0 }
+.serviceTotalsBGWARNING { border: 1px #ffa500 solid; }
+.serviceTotalsUNKNOWN { text-align: center; background-color: #E066FF; color: #fff; border: 0 }
+.serviceTotalsBGUNKNOWN { border: 1px #E066FF solid; }
+.serviceTotalsCRITICAL { text-align: center; background-color: #ff3300; color: #fff; border: 0 }
+.serviceTotalsBGCRITICAL { border: 1px #ff3300 solid; }
+.serviceTotalsPENDING { text-align: center; background-color: #acacac; color: #fff; border: 0 }
+.serviceTotalsBGPENDING { border: 1px #acacac solid; }
+.serviceTotalsPROBLEMS { text-align: center; background-color: #6ec2fd; color: #fff; border: 0 }
+.serviceTotalsBGPROBLEMS { border: 1px #6ec2fd solid; }
+
+div.serviceTotalsCommands { text-align: right; font-weight: bold; font-size: 10pt; }
+table.serviceTotalsCommands { font-size: 10pt; background-color: #fff; padding: 2px; border: 0; }
+th.serviceTotalsCommands,A.serviceTotalsCommands { text-align: right; font-size: 10pt; background-color: #707677; color: #fff; border: 0; }
+td.serviceTotalsCommands { text-align: right; background-color: #e9e9e9; border: 0; }
+a.serviceTotalsCommands:hover { color: #000; }
+serviceTotalsCommands a:hover { color: #fff; }
+
+div.hostTotals { text-align: center; font-weight: bold; font-size: 10pt; }
+table.hostTotals { font-size: 10pt; background-color: #fff; padding: 2px; border: 0; }
+th.hostTotals,A.hostTotals { text-align: center; font-size: 10pt; background-color: #707677; color: #fff; border: 0; }
+td.hostTotals { text-align: center; background-color: #e9e9e9; }
+a.hostTotals:hover { color: #000; }
+
+.hostTotalsUP { text-align: center; background-color: #00cc33; color: #fff; border: 0 }
+.hostTotalsBGUP { border: 1px #00cc33 solid; }
+.hostTotalsDOWN { text-align: center; background-color: #ff3300; color: #fff; border: 0 }
+.hostTotalsBGDOWN { border: 1px #ff3300 solid; }
+.hostTotalsUNREACHABLE { text-align: center; background-color: #E066FF; color: #fff; border: 0 }
+.hostTotalsBGUNREACHABLE { border: 1px #E066FF solid; }
+.hostTotalsPENDING { text-align: center; background-color: #acacac; color: #fff; border: 0 }
+.hostTotalsBGPENDING { border: 1px #acacac solid; }
+.hostTotalsPROBLEMS { text-align: center; background-color: #6ec2fd; color: #fff; border: 0 }
+.hostTotalsBGPROBLEMS { border: 1px #6ec2fd solid; }
+
+div.hostTotalsCommands { text-align: right; font-weight: bold; font-size: 10pt; }
+table.hostTotalsCommands { font-size: 10pt; background-color: #fff; padding: 2px; border: 0; }
+th.hostTotalsCommands,A.hostTotalsCommands { text-align: right; font-size: 10pt; background-color: #707677; color: #fff; border: 0; }
+td.hostTotalsCommands { text-align: right; background-color: #e9e9e9; border: 0; }
+a.hostTotalsCommands:hover { color: #000; }
+hostTotalsCommands a:hover { color: #fff; }
+
+.miniStatusPENDING { background-color: #acacac;  text-align: center; }
+.miniStatusOK { background-color: #00cc33;  text-align: center; }
+.miniStatusUNKNOWN { background-color: #bf44b2;  text-align: center; }
+.miniStatusWARNING { background-color: #ffa500;  text-align: center; }
+.miniStatusCRITICAL { background-color: #ff3300;  text-align: center; }
+.miniStatusPENDING a, .miniStatusOK a, .miniStatusUNKNOWN a, .miniStatusWARNING a, .miniStatusCRITICAL a { color: #000; }
+.miniStatusPENDING a:hover, .miniStatusOK a:hover, .miniStatusUNKNOWN a:hover, .miniStatusWARNING a:hover, .miniStatusCRITICAL a:hover { color: #fff; }
+
+.miniStatusUP { background-color: #00cc33; text-align: center; }
+.miniStatusDOWN { background-color: #ff3300; text-align: center; }
+.miniStatusUNREACHABLE { background-color: #bf44b2; text-align: center; }
+.miniStatusUP a, .miniStatusDOWN a, .miniStatusUNREACHABLE a { color: #000; }
+.miniStatusUP a:hover, .miniStatusDOWN a:hover, .miniStatusUNREACHABLE a:hover { color: #fff; }
+
+.hostImportantProblem { background-color: #ff3300; color: #000; }
+.hostUnimportantProblem { background-color: #ffcccc; color: #000; }
+
+.serviceImportantProblem { background-color: #ff3300; color: #000; }
+.serviceUnimportantProblem { background-color: #ffcccc; color: #000; }
+
+.highlightRow { background-color: #BBC3BB; }
+
+.filterTitle { font-size: 10pt; font-weight: bold; }
+.filterName { font-size: 9pt; padding-top: 0.2em; padding-bottom: 0.2em; padding-right: 0.7em;}
+.filterValue { color: #707677; font-size: 9pt; padding-top: 0.2em; padding-bottom: 0.2em;}
+
+#display_filters_box,
+#host_status_types_box,
+#host_properties_box,
+#service_status_types_box,
+#service_properties_box { position: absolute; padding: 0.4em; margin-left: 0.5em; z-index: 101; }
+
+#display_filters_box { z-index: 100; padding-right: 1em; }
+
+#apply_button { margin-top:0.5em; }
